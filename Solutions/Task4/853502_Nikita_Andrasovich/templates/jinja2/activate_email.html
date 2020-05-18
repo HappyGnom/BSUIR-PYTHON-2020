@@ -1,0 +1,7 @@
+{% autoescape off %}
+    Hello, dear {{ user.username }}, 
+    This is an account activation message for HappyStudio developer account.
+    Please, use the link below to confirm your registration:
+    http://{{ domain }}{{ url('authentication:activate', kwargs={'uidb64' : uid, 'token' : token})}}
+{% endautoescape %}
+

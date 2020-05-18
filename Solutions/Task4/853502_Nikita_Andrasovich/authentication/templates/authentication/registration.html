@@ -1,0 +1,20 @@
+<html>
+    <head>
+        {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'authentication/style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crete+Round">
+    </head>
+
+    <body>
+       
+        <div class="fullscreenDiv">
+            <form class="center" method="post" action=''>
+                <p class="title">Developer registration</p>
+                {% csrf_token %}
+                {{register_form}}
+                <button class="submit-button">Submit</button>
+            </form>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<html>
+    <head>
+        {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'authentication/style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crete+Round">
+    </head>
+
+    <body>
+        <div class='fullscreenDiv'>
+            <div class="center">
+                <p style="color: #A31621">User for that email already exists!</p>
+                <a class="submit-button" href="{% url 'portfolio:portfolio' %}" >Back to site</a>
+            </div>
+        </div>
+    </body>
+</html>

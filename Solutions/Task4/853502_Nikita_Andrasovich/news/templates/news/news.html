@@ -1,0 +1,75 @@
+<html>
+    <head>
+        {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'news/news_style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crete+Round">
+    </head>
+
+    <body>
+        <div class="header">
+            <dev class="header-left">
+                <img class="header-image" src="{% static 'news/images/parrot-icon.svg' %}" alt='Company logo'>
+                <h1>Happy Studio Dev</h1>
+            </dev>
+            <dev class="header-right">
+                <p>{{user.username}}</p>
+                <form method="post" action='' style="margin: 0;">
+                    {% csrf_token %}
+                    <button class="exit-button">Log out</button>
+                </form>
+            </dev>
+        </div>
+
+        <div class="news-box">
+
+            <h1>Latest news</h1>
+
+            {% regroup all_news by thread as news_threads %}
+            {% for thread in news_threads %}
+                
+                {% if forloop.counter == 1 %}
+                    <details style="border-top: 0">
+                {% else %}
+                    <details>
+                {% endif %}
+                    <summary>{{thread.grouper}}</summary>
+
+                    {% for news_item in thread.list|slice:":10" %}
+
+                        <div class="news-item">
+                            <div class="news-item-header">
+                                <p class="news-item-title">{{news_item.title}}</p>
+                                <p class="news-item-date">{{news_item.pub_date}}</p>
+
+                                {% if is_manager %}
+                                    <div class="news-item-buttons">
+                                        <a class="news-button" style="margin-right:10px;" 
+                                        href="edit/{{thread.grouper.pk}}/{{news_item.pk}}">Edit</a>
+
+                                        <form method="post" action='' style="display: contents;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="_method" value="delete">
+                                            <input type="hidden" name="_id" value='{{news_item.pk}}'>
+                                            <button class="news-button" style="background-color: #A31621;">Delete</button>
+                                        </form>
+                                    
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <p class="news-item-content">{{news_item.content}}</p>
+                        </div>
+                    
+                    {% endfor %}
+
+                    {% if is_manager %}
+                       <a class="news-button" style="margin-top:10px;" 
+                                        href="edit/{{thread.grouper.pk}}/0">Add news</a>
+                    {% endif %}
+                    
+                </details>
+
+            {% endfor %}
+            
+        </div>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+    <head>
+        {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'portfolio/email_style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crete+Round">
+    </head>
+
+    <body>
+        {% if email %}
+            <div class='fullscreenDiv'>
+                <div class="center">We will get in contact with you soon, {{email}}!</div>
+            </div>
+        {% else %}
+            <div class='fullscreenDiv'>
+                <div class="center" style="color: #A31621">You didn't specify the email :(</div>
+            </div>
+        {% endif %}
+    </body>
+</html>

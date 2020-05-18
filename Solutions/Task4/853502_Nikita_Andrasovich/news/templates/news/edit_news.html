@@ -1,0 +1,22 @@
+<html>
+    <head>
+        {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'news/edit_style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crete+Round">
+    </head>
+
+    <body>
+       
+        <div class="fullscreenDiv">
+            <form class="center" method="post" action=''>
+                <p class="title">News editor</p>
+                <p class="thread_title">'{{thread}}' thread</p>
+
+                {% csrf_token %}
+                {{news_form}}
+                <button class="save-button">Save</button>
+            </form>
+        </div>
+        
+    </body>
+</html>

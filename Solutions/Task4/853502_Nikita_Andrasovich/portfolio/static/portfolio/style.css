@@ -1,0 +1,409 @@
+.header-container {
+    height: 20vw;
+    display: flex;
+    flex-direction: horizontal;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-left {
+    flex: 3;
+    background-color: #fffffc;
+}
+
+.header-right {
+    flex: 6;
+    background-color: #06d6a0;
+}
+
+.header-left .header-text, .header-right .header-text {
+    font-family: 'Crete Round',serif;
+    font-size: 3.4vw;
+    font-weight: 400;
+}
+
+.header-left .header-text {
+    text-align: end;
+    width: 100%;
+    color: #06d6a0;
+    margin-right: 16px;
+}
+
+.header-right .header-text {
+    text-align: start;
+    color: #fffffc;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: horizontal;
+    align-items: center;
+    width: 100%;
+}
+
+.header-right .header-text h1 {
+    flex: 2;
+}
+
+.header-image-container {
+    flex: 1;
+    margin-right: 200px;
+  }
+  
+.subheader-container {
+    height: 20vw;
+    display: flex;
+    flex-direction: horizontal;
+}
+
+.subheader-left, .subheader-right {
+    display: flex;
+    align-items: center;
+}
+
+.subheader-left {
+    flex: 3;
+    background-color: #fffffc;
+}
+
+.subheader-right {
+    flex: 6;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-left-radius: 100%;
+    background-color: #06d6a0;
+}
+
+.subheader-left h1{
+    font-family: 'Crete Round',serif;
+    font-size: 2vw;
+    width: 100%;
+    height: 100%;
+    color: #253447;
+    text-align: end;
+    margin-top: 64px;
+    margin-right: 16px;
+    font-weight: 300;
+}
+
+.reviews h1 {
+    font-family: 'Crete Round',serif;
+    font-size: 5.5vw;
+    color: #253447;
+    text-align: start;
+    margin-left: 55px;
+    font-weight: 300;
+}
+
+.cards-container {
+    display: flex;
+    height: 500px;
+    margin-top: -30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 1;
+    margin: 3vw;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.625rem 1.25rem 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card .card-image{
+    background-size: cover;
+    width: 70%;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-content {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #fff;
+    color: #253447;
+    height: 8vw;
+    margin: 0;
+    padding: 20px;
+    padding: 1.25rem;
+}
+
+.card .card-headline{
+    font-family: 'Crete Round',serif;
+    width: 100%;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+.card .card-text{
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.projects {
+    width: 100%;
+    padding-bottom: 70px;
+    background-color: #FFD166;
+}
+
+.projects h1 {
+    font-family: 'Crete Round',serif;
+    font-size: 5.5vw;
+    color: #253447;
+    text-align: end;
+    margin-right: 55px;
+    font-weight: 300;
+}
+
+:root {
+    --gutter: 30px;
+}
+  
+.app {
+    padding: var(--gutter) 0;
+    display: grid;
+    grid-gap: var(--gutter) 0;
+    grid-template-columns: var(--gutter) 1fr var(--gutter);
+    align-content: start;
+}
+  
+.app > * {
+    grid-column: 2 / -2;
+}
+  
+.app > .full {
+    grid-column: 1 / -1;
+}
+  
+.hs {
+    display: grid;
+    grid-gap: calc(var(--gutter) * 3 / 2);
+    grid-template-columns: 10px;
+    grid-template-rows: minmax(150px, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: calc(50% - var(--gutter) * 15);
+  
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+    padding-bottom: calc(.75 * var(--gutter));
+    margin-bottom: calc(-.25 * var(--gutter));
+}
+  
+.hs:before, .hs:after {
+    content: '';
+    width: 15px;
+}
+  
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.app {
+    width: 80%;
+    background-color: #FFD96E;
+    border-radius: 16px;
+    margin: auto;
+}
+  
+.hs > li, .item {
+    scroll-snap-align: center;
+    padding: calc(var(--gutter) / 20 * 1.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 34vw;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.item-headline {
+    font-family: 'Crete Round',serif;
+    width: 100%;
+    text-align: center;
+    font-size: 1.75rem;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.item-sub-headline {
+    font-family: 'Crete Round',serif;
+    width: 100%;
+    color: #778591;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.item-image {
+    height: 25vw;
+    margin-top: 20px;
+    flex: 4;
+}
+
+.item-text{
+    text-align: center;
+    font-size: 1.2rem;
+}
+  
+.no-scrollbar {
+    scrollbar-width: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.contact {
+    width: 100%;
+    display: block;
+    margin-bottom: 0;
+    padding-bottom: 30px;
+    background-color: #253447;
+}
+
+.contact h1 {
+    font-family: 'Crete Round',serif;
+    font-size: 5.5vw;
+    color: #fffffc;
+    text-align: start;
+    margin-left: 55px;
+    margin-top: 0;
+    font-weight: 300;
+}
+
+.contact .leave-email {
+    text-align: center;
+    color: #fffffc;
+    width: 100%;
+    font-size: 1.5vw;
+}
+
+.contact .contact-yourself{
+    text-align: end;
+    color: #DEEBED;
+    width: 50%;
+    margin-right:auto;
+    margin-left: auto;
+    margin-top: 70px;
+    font-size: 1.2vw;
+    margin-bottom:0;
+}
+
+.email-form {
+    width: 50%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: row;
+}
+
+.email-input {
+    flex: 3 ;
+    padding: 12px 20px;
+    font-size: 1.25vw;
+    border-radius: 6px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.email-button {
+    margin-left: 30px;
+    margin-right: 8px;
+    background-color: #FFD166;
+    border: none;
+    color: #253447;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Crete Round',serif;
+    display: inline-block;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+.login-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: block;
+}
+
+.failed_auth{
+    width: 100%;
+    text-align: center;
+    color: #A31621;
+    font-size: 1vw;
+}
+
+.dev_mode{
+    font-family: 'Crete Round',serif;
+    font-size: 2vw;
+    margin: 0 0 10px 0;
+    color: #fffffc;
+    text-align: center;
+}
+
+.login-container .log-input{
+    font-size: 1vw;
+    height: 2.4vw;
+    border-radius: 6px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+}
+
+.login-buttons{
+    margin-top:20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.log-button {
+    background-color: #FFD166;
+    border: none;
+    color: #253447;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 100px;
+    text-align: center;
+    text-decoration: none;
+    width: 10vw;
+    border-radius: 8px;
+    font-family: 'Crete Round',serif;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+.register {
+    color: #345995;
+    font-size: 1vw;
+    font-weight: 400;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+body { 
+    margin: 0; 
+    padding: 0;  
+    background-color: #fffffc;
+}

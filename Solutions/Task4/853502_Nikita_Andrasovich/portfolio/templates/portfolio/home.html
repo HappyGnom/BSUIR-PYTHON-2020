@@ -1,0 +1,111 @@
+<html>
+    <head>
+        {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crete+Round">
+    </head>
+
+    <body>
+        <div class="header-container">
+            <div class="header-left">
+                <div class ="header-text">
+                    <h1>Happy</h1>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class ="header-text">
+                    <h1>Studio</h1>
+                    <div class="header-image-container">
+                        <img class="header-image" src="{% static 'portfolio/images/parrot-icon.svg' %}" alt='Company logo'>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subheader-container">
+            <div class="subheader-left">
+                <h1>Lovely Android apps<br/>that earn for <b>you</b></h1>
+            </div>
+            <div class="subheader-right">
+                {% if user.is_anonymous %}  
+                    <form class="login-container" method="post" action=''>
+                        {% if auth_failed %}
+                            <p class="failed_auth">Wrong login or password</p>
+                        {% endif %}
+
+                        {% csrf_token %}
+                        {{login_form}}
+                        <div class="login-buttons">
+                            <button class="log-button">Log in</button>
+                            <a class="register" href="authentication/registration/">or register</a>
+                        </div>
+                    </form>
+                {% else %}
+                    <p class="dev_mode">Developer mode</p>
+                    <a class="log-button" href="news/">Go to news</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="reviews">
+            <h1>Reviews</h1>
+
+            <div class="cards-container">
+                {% csrf_token %}
+                {% for review in top_reviews %}
+
+                    <div class="card"> 
+                        <img class="card-image" src="{{review.image.url}}" alt='Review company image'>
+
+                        <div class="card-content">
+                            <h3 class="card-headline">"{{review.company}}"</h3>
+                            <p class="card-text">{{review.comment}}</p>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="projects">
+            <h1>Our projects</h1>
+
+            <div class="app">
+                <ul class="hs full no-scrollbar">
+                    {% csrf_token %}
+                    {% for project in our_projects %}
+
+                        <li class="item">
+                            <p class="item-headline">{{project.name}}</p>
+                            <p class="item-sub-headline">({{project.client}})</p>
+
+                            {% block content %}
+                                <img class="item-image" src="{{project.image.url}}" alt='Project image'>
+                            {% endblock %}
+
+                            <p class="item-text">{{project.description}}</p>
+                        </li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact">
+            <h1>Contact us</h1>
+
+            <p class="leave-email">Leave us your email and we will get in contact with you</p>
+            <form class="email-form" method="post" action=''>
+                {% csrf_token %}
+                {{client_mail_form}}
+                <button class="email-button">Leave email</button>
+            </form>
+            <p class="contact-yourself">Or get to us first yourself :</p>
+            <p class="contact-yourself" style="margin-top: 0;">contacthappystud@gmail.com</p>
+            <p class="contact-yourself" style="margin-top: 0;">+375-32-553-31-75</p>
+
+        </div>
+
+    </body>
+</html>
