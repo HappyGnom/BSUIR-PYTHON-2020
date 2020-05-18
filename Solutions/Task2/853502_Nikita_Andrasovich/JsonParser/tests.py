@@ -1,5 +1,6 @@
 import parser
 import unittest
+import json
 
 
 class NestedClass:
@@ -45,6 +46,25 @@ class TestParse(unittest.TestCase):
     def test_broken_json(self):
         with self.assertRaises(Exception):
             parser.from_json("Not a Json", globals())
+            
+    def test_default_dumps_comparison(self):
+        some_object = ["Hello", False, 4]
+
+        default_json = json.dumps(some_object).replace(" ", "")
+        my_json = parser.to_json(some_object).replace(" ", "")
+
+        self.assertEqual(default_json, my_json)
+
+    def test_default_loads_comparison(self):
+        some_object = [None, 5, ["hey", "Ouch"]]
+
+        default_json = json.dumps(some_object)
+        my_json = parser.to_json(some_object)
+
+        default_restored = json.loads(default_json)
+        my_restored = parser.from_json(my_json, globals())
+
+        self.assertEqual(default_restored, my_restored)
 
 
 def tests_suite():
